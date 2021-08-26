@@ -1,43 +1,58 @@
-using System.Threading;
+using System.IO;
 using NUnit.Framework;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
 using treatmentTests1.PageObject;
 
 namespace treatmentTests1
 {
-    public class Tests
+    [TestFixture]
+    public class Tests : BasicalClassTest
     {
-        private IWebDriver _webdriver;
-        private const string _login = "modara007@gmail.com";
-        private const string _password = "123456Ab";
-        private const string _UsingCont = "AutoTest";
+       
         
-        [SetUp]
-        public void Setup()
-        {
-            _webdriver = new OpenQA.Selenium.Chrome.ChromeDriver();
-            _webdriver.Navigate().GoToUrl("https://test.rozentalgroup.ru/demo/authorization/index.php");
-        
-        }
 
         [Test]
         public void Test1()
         {
-            var mainMenu = new MainMenuPageObject(_webdriver);
+            var mainMenu = new MainMenuPageObject(_webDriver);
             mainMenu
                  .SignIn()
                  .LogIN(_login, _password)
                  .ClickTreatment()
                  .treatmentclick()
                  .create()
-                 .Treatmentcreate(_UsingCont);                                                 
+                 .CreateTreatments(_UsingCont);
+
             Assert.Pass();
         }
+
         [TearDown]
-        public void TearDown()
+
+        public void rezult()
         {
-            //_webdriver.Quit();
+            
+            
+         try
+            {
+                Assert.AreEqual(_asd, _login);
+                string Login = "Логин  совпадает";
+                StreamWriter rez = new StreamWriter(@"C:\Users\Кирилл\Desktop\rezult.txt");
+                rez.WriteLine(Login);
+                rez.Close();
+             }
+                       
+         catch
+            { 
+                string Login = "Логин не совпадает";
+                StreamWriter rez = new StreamWriter(@"C:\Users\Кирилл\Desktop\rezult.txt");
+                rez.WriteLine(Login);
+                rez.Close();
+
+            }
+            
         }
-    
+
+
     }
 }

@@ -18,7 +18,7 @@ namespace treatmentTests1.PageObject
 
         public MainMenuPageObject treatmentclick ()
         {
-            Thread.Sleep(5000);
+            Thread.Sleep(8000);
 
             var Treatment = _webdriver.FindElement(_Treatment);
             Treatment.Click();

@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 
 namespace treatmentTests1.PageObject
 {
     class MainMenuPageObject
     {
-        private IWebDriver _webDriver;
+        private IWebDriver _webdriver;
 
         public MainMenuPageObject()
         {
@@ -16,22 +12,22 @@ namespace treatmentTests1.PageObject
 
         public MainMenuPageObject(IWebDriver webDriver)
         {
-            _webDriver = webDriver;
+            _webdriver = webDriver;
         }
-        public AuthorizationPageObject SignIn ()
+        public AuthorizationPageObject SignIn()
         {
 
-            return new AuthorizationPageObject(_webDriver);
+            return new AuthorizationPageObject(_webdriver);
         }
-        public TreatmentPageTest create ()
+        public CreateTreatment create()
         {
-            return new TreatmentPageTest(_webDriver);
+            return new CreateTreatment (_webdriver);
         }
         public DesktopUserPageObject ClickTreatment()
         {
-            return new DesktopUserPageObject(_webDriver);
+            return new DesktopUserPageObject(_webdriver);
 
         }
-        
+
     }
 }

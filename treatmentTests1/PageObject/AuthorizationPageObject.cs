@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading;
+﻿using System.Threading;
 using OpenQA.Selenium;
 
 namespace treatmentTests1.PageObject
@@ -24,9 +21,9 @@ namespace treatmentTests1.PageObject
             _webdriver.FindElement(_logininputButton).SendKeys(Login);
             _webdriver.FindElement(_PasswordinputButton).SendKeys(password);
             _webdriver.FindElement(_LogIn).Click();
-            
 
-            return new  MainMenuPageObject(_webdriver);
+
+            return new MainMenuPageObject(_webdriver);
         }
     }
 }
