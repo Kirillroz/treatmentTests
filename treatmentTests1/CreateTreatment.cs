@@ -19,6 +19,7 @@ namespace treatmentTests1
         private readonly By _ClickCreateTrerment = By.XPath("//button[@class='btn btn-primary']");
         private readonly By _InputCalendar = By.XPath("//input[@id='calendar']");       
         private readonly By _AcceptDate = By.XPath("//div[@class='flatpickr-confirm  lightTheme']");
+
         
         public CreateTreatment (IWebDriver webdriver)
         {
