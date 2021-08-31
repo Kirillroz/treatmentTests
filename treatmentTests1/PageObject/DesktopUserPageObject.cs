@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 
 namespace treatmentTests1.PageObject
 {
@@ -18,12 +19,10 @@ namespace treatmentTests1.PageObject
 
         public MainMenuPageObject treatmentclick ()
         {
-            Thread.Sleep(8000);
+            new WebDriverWait(_webdriver, TimeSpan.FromSeconds(15000)).Until(ExpectedConditions.ElementExists(By.XPath("//a[@href='/demo/user/treatment/']")));
 
             var Treatment = _webdriver.FindElement(_Treatment);
-            Treatment.Click();
-            Thread.Sleep(3000);
-
+            Treatment.Click();           
 
             return new MainMenuPageObject(_webdriver);
         }

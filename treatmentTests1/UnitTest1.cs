@@ -1,8 +1,10 @@
+using System;
 using System.IO;
 using System.Threading;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Support.UI;
 using treatmentTests1.PageObject;
 namespace treatmentTests1
 {
@@ -19,13 +21,17 @@ namespace treatmentTests1
         private const string _eMail = "modara007@gmail.com";
         private const string _PhoneNumber = "9963838043";
         int cout = 0;
-
+      
         
 
         [Test]
         public void Test1()
         {
             var mainMenu = new MainMenuPageObject(_webDriver);
+            
+          //  WebDriverWait _wait = new WebDriverWait(_webDriver, new TimeSpan(0, 1, 0));
+
+           // _wait.Until(d => d.FindElement(By.Id("Id_Your_UIElement")));
             mainMenu
                  .SignIn()
                  .LogIN(_login, _password)
@@ -46,26 +52,30 @@ namespace treatmentTests1
         [TearDown]
 
         public void rezult()
-        { 
+        {
+          WebDriverWait wait = new WebDriverWait(_webDriver, new TimeSpan(0, 0, 5));
+
+
             //Получение проверяемых данных 
-         var searchAutoTest = _webDriver.FindElement(_SearchAutoTest);
+        new WebDriverWait(_webDriver, TimeSpan.FromSeconds(15000)).Until(ExpectedConditions.ElementExists(By.XPath("//input[@class='module__search-line form-control form-control-flush']")));
+        var searchAutoTest = _webDriver.FindElement(_SearchAutoTest);
             searchAutoTest.SendKeys(_UsingCont);
-            Thread.Sleep(8000);
-         var ClickCreatedTreatment = _webDriver.FindElement(_ClickCreatedTreament);
+        new WebDriverWait(_webDriver, TimeSpan.FromSeconds(15000)).Until(ExpectedConditions.ElementExists(By.XPath("//p[contains(text(),'AutoTest')]")));
+        var ClickCreatedTreatment = _webDriver.FindElement(_ClickCreatedTreament);
             ClickCreatedTreatment.Click();
-            Thread.Sleep(3000);
-         var ExpectedFIO = _webDriver.FindElement(_ExpectedFIO);
+        new WebDriverWait(_webDriver, TimeSpan.FromSeconds(3000)).Until(ExpectedConditions.ElementExists(By.XPath("//span[@id='fio']")));
+        var ExpectedFIO = _webDriver.FindElement(_ExpectedFIO);
             string ExpectedFioStr = ExpectedFIO.Text;
-            Thread.Sleep(3000);
-         var ExpectedEmail = _webDriver.FindElement(_ExpectedEmail);
+        new WebDriverWait(_webDriver, TimeSpan.FromSeconds(3000)).Until(ExpectedConditions.ElementExists(By.XPath("//a[@id='email']")));   
+        var ExpectedEmail = _webDriver.FindElement(_ExpectedEmail);
             string ExpectedEmailStr = ExpectedEmail.Text;
-            Thread.Sleep(3000);
-         var ExpectedPhone = _webDriver.FindElement(_ExpectedPhone);
+        new WebDriverWait(_webDriver, TimeSpan.FromSeconds(3000)).Until(ExpectedConditions.ElementExists(By.XPath("//span[@id='phone']")));
+        var ExpectedPhone = _webDriver.FindElement(_ExpectedPhone);
             string ExpectedPhoneStr = ExpectedPhone.Text;
-            Thread.Sleep(3000);
-         var ExpectedContent = _webDriver.FindElement(_ExpectedContent);
+        new WebDriverWait(_webDriver, TimeSpan.FromSeconds(3000)).Until(ExpectedConditions.ElementExists(By.XPath("//p[@id='content']")));
+        var ExpectedContent = _webDriver.FindElement(_ExpectedContent);
             string ExpectedContentStr = ExpectedContent.Text;
-            Thread.Sleep(3000);
+           
 
             //Подготовка к началу основной проверки 
 
