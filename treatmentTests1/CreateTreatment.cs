@@ -19,7 +19,7 @@ namespace treatmentTests1
         private readonly By _ContentTreatment = By.XPath("//textarea[@id='content']");
         private readonly By _ClickCreateTrerment = By.XPath("//button[@class='btn btn-primary']");
         private readonly By _InputCalendar = By.XPath("//input[@id='calendar']");       
-        private readonly By _AcceptDate = By.XPath("//div[@class='flatpickr-confirm  lightTheme']");
+        private readonly By _AcceptDate = By.XPath("//div[@class='flatpickr-confirm lightTheme visible']");
 
         
         public CreateTreatment (IWebDriver webdriver)
@@ -44,7 +44,7 @@ namespace treatmentTests1
             Thread.Sleep(3000);
             var ChoiseDate = _webdriver.FindElement(_ChoiseDate);
             ChoiseDate.Click();
-            new WebDriverWait(Webdriver, TimeSpan.FromSeconds(3000)).Until(ExpectedConditions.ElementExists(By.XPath("//div[@class='flatpickr-confirm  lightTheme']")));
+            new WebDriverWait(Webdriver, TimeSpan.FromSeconds(3000)).Until(ExpectedConditions.ElementExists(By.XPath("//div[@class='flatpickr-confirm lightTheme visible']")));
             var AcceptDate = _webdriver.FindElement(_AcceptDate);
             AcceptDate.Click();
             new WebDriverWait(Webdriver, TimeSpan.FromSeconds(3000)).Until(ExpectedConditions.ElementExists(By.XPath("//button[@class='btn btn-primary']")));
